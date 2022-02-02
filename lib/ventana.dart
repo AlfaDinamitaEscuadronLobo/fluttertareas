@@ -50,11 +50,7 @@ class _ventanaState extends State<ventana> {
           borderRadius: BorderRadius.circular(20),
         ),
         backgroundColor: Color(0xFF405858),
-        onPressed: () => showDialog(
-          context: context,
-          child: AddTodoDialogWitdget(),
-          barrierDismissible: false,
-        ),
+        onPressed: (){},
         child: Icon(Icons.add),
       ),
     );
