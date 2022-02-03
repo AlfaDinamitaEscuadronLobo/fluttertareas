@@ -182,4 +182,49 @@ class _TaskEditScreenState extends State<TaskEditScreen> {
                                         if (newTaskReminderDate == null) {
                                           return;
                                         }
+TimeOfDay reminderTime =
+                                            await showTimePicker(
+                                                context: context,
+                                                initialTime: reminderDate !=
+                                                        null
+                                                    ? TimeOfDay(
+                                                        hour: reminderDate.hour,
+                                                        minute:
+                                                            reminderDate.minute,
+                                                      )
+                                                    : TimeOfDay(
+
+                                                        hour: 0,
+                                                        minute: 0,
+                                                      ));
+
+                                        newTaskReminderDate =
+                                            newTaskReminderDate.add(Duration(
+                                          hours: reminderTime.hour,
+                                          minutes: reminderTime.minute,
+                                        ));
+
+                                        setState(() {
+                                          reminderDateString =
+                                              newTaskReminderDate.toString();
+                                        });
+                                      },
+                                      child: Text(
+                                        newTaskReminderDate != null
+                                            ? reminderDateString.substring(0,
+                                                reminderDateString.length - 7)
+                                            : 'No establecido',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(Icons.delete_outline,color: Color(0xFF405858),),
+                                    onPressed: () {
+                                      setState(() {
+                                        newTaskReminderDate = null;
+                                      });
+                                    },
 
