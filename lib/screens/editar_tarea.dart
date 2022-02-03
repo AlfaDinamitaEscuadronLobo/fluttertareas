@@ -249,3 +249,43 @@ TimeOfDay reminderTime =
                                   Navigator.pop(context);
                                   return;
                                 }
+                                int id;
+
+                                if (reminderDate != newTaskReminderDate &&
+                                    newTaskReminderDate != null) {
+                                  var scheduledNotificationDateTime =
+                                      newTaskReminderDate
+                                          .subtract(Duration(seconds: 5));
+                                  var androidPlatformChannelSpecifics =
+                                      AndroidNotificationDetails(
+                                    newTaskTitle,
+                                    'Notificacion de tareas pendientes',
+                                    'Hacer la tarea',
+                                    priority: Priority.Max,
+                                    importance: Importance.Max,
+                                    playSound: true,
+                                  );
+                                  var iOSPlatformChannelSpecifics =
+                                      IOSNotificationDetails();
+                                  NotificationDetails platformChannelSpecifics =
+                                      NotificationDetails(
+                                          androidPlatformChannelSpecifics,
+                                          iOSPlatformChannelSpecifics);
+                                  id = widget.task.reminderId != null
+                                      ? widget.task.reminderId
+                                      : Provider.of<TaskData>(context,
+                                              listen: false)
+                                          .tasks
+                                          .indexOf(widget.task);
+                                  print(id);
+
+                                  await flutterLocalNotificationsPlugin
+                                      .cancel(id);
+                                  await flutterLocalNotificationsPlugin.schedule(
+                                      id,
+                                      'Recordario',
+                                      'Es la hora de tu tarea: $newTaskTitle',
+                                      scheduledNotificationDateTime,
+                                      platformChannelSpecifics);
+                                }
+
