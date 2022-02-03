@@ -228,3 +228,24 @@ TimeOfDay reminderTime =
                                       });
                                     },
 
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 50.0,
+                          ),
+                          Container(
+                            color: Color(0xFF405858),
+                            width: double.infinity,
+                            child: OptionButton(
+                              title: 'Guardar',
+                              onPressed: () async {
+                                if (newTaskTitle == widget.task.title &&
+                                    newTaskIsChecked == dropDownVal &&
+                                    newTaskReminderDate ==
+                                        widget.task.reminderDate) {
+                                  Navigator.pop(context);
+                                  return;
+                                }
