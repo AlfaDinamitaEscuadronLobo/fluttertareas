@@ -288,4 +288,38 @@ TimeOfDay reminderTime =
                                       scheduledNotificationDateTime,
                                       platformChannelSpecifics);
                                 }
+if (widget.task.reminderDate != null &&
+                                    newTaskReminderDate == null) {
+                                  await flutterLocalNotificationsPlugin
+                                      .cancel(widget.task.reminderId);
+                                }
+
+                                Provider.of<TaskData>(context, listen: false)
+                                    .modifyTask(
+
+                                        widget.task,
+                                        Task(
+
+                                            title: newTaskTitle,
+                                            isChecked: dropDownVal,
+                                            reminderDate: newTaskReminderDate,
+                                            reminderId: id));
+
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
 
