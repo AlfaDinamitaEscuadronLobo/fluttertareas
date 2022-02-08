@@ -54,3 +54,29 @@ class InstructionsScreen extends StatelessWidget {
     );
   }
 }
+class InstructionTile extends StatelessWidget {
+  InstructionTile({this.title});
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(
+        5.0,
+      ),
+      decoration: BoxDecoration(
+        color: Color(0xFF405858),
+        borderRadius: BorderRadius.all(Radius.circular(20.0)),
+      ),
+      child: ListTile(
+        leading: Icon(
+          FontAwesomeIcons.greaterThan,
+          size: 25.0,
+        ),
+        title: Text(title),
+      ),
+    );
+  }
+}
