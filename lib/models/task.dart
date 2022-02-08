@@ -11,6 +11,7 @@ class Task {
     isChecked = !isChecked;
   }
 
+
   Map toJson() => {
         "title": title,
         "isChecked": isChecked,

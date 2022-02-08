@@ -1,6 +1,7 @@
 class AppInfoScreen extends StatelessWidget {
   static String id = 'AppInfoScreen';
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

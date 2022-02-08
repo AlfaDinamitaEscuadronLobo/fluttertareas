@@ -7,6 +7,7 @@ import 'package:todoey/widgets/task_tile.dart';
 
 final LocalStorage localStorage = LocalStorage('toDoList.json');
 
+
 bool initialised = false;
 List tasksList = [];
 String theme;
