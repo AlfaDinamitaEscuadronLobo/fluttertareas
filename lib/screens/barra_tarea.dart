@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
-
-
+import 'package:provider/provider.dart';
+import 'package:todoey/screens/agregar_tarea.dart';
+import 'package:todoey/screens/info_version.dart';
+import 'package:todoey/screens/instrucciones.dart';
+import 'package:todoey/screens/modo_oscuro.dart';
+import 'package:todoey/widgets/tasks_list.dart' hide localStorage;
+import 'package:todoey/models/task_data.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TasksScreen extends StatelessWidget {
   static String id = 'tasksScreen';
+
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
         child: SafeArea(
@@ -40,8 +47,6 @@ class TasksScreen extends StatelessWidget {
           ),
         ),
       ),
-
-      
       backgroundColor: Color(0xFF405858),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -116,7 +121,6 @@ class TasksScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                
                 Expanded(
                   child: Container(
                     padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -130,8 +134,11 @@ class TasksScreen extends StatelessWidget {
                     child: TasksList(),
                   ),
                 ),
-
+              ],
+            );
+          }
+        },
+      ),
     );
-
   }
 }
